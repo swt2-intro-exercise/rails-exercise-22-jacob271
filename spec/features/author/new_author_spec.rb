@@ -14,11 +14,12 @@ describe "New author page", type: :feature do
    end
    it "should save author in database" do
      visit new_author_path
+     num_authors = Author.count
      page.fill_in('author[first_name]', with: 'Alan')
      page.fill_in('author[last_name]', with: 'Turing')
      page.fill_in('author[homepage]', with: 'http://wikipedia.org/Alan_Turing')
      find('input[type="submit"]').click
-     expect(Author.count).to eq(1)
+     expect(Author.count).to eq(num_authors + 1)
    end
 
 end
