@@ -10,4 +10,7 @@ class AuthorsController < ApplicationController
     @author.save
     redirect_to root_path, notice: 'Success!'
   end
+  def index
+    @authors = Author.all
+  end
 end
