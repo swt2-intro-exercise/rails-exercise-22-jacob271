@@ -15,4 +15,9 @@ describe "Index paper page", type: :feature do
     visit papers_url
     expect(page).to have_link 'Delete this paper', href: paper_path(@paper)
   end
+  it "should show author name" do
+    @paper = FactoryBot.create :paper
+    visit papers_url
+    expect(page).to have_text(@paper.authors[0].name)
+  end
 end
