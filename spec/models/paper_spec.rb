@@ -12,4 +12,8 @@ RSpec.describe Paper, type: :model do
     paper = Paper.new(venue: "Test", year: 2023)
     expect(paper).to_not be_valid
   end
+  it "is not valid with non numerical year" do
+    paper = Paper.new(title: "Test", venue: "Test", year: "twenty23")
+    expect(paper).to_not be_valid
+  end
 end
