@@ -5,9 +5,14 @@ describe "Index paper page", type: :feature do
     # https://guides.rubyonrails.org/routing.html#path-and-url-helpers
     visit papers_url
   end
-  it "should link to 'edit_paer_path'" do
+  it "should link to 'edit_paper_path'" do
     @paper = FactoryBot.create :paper
     visit papers_url
     expect(page).to have_link 'Edit this paper', href: edit_paper_path(@paper)
+  end
+  it "should have link to delete paper" do
+    @paper = FactoryBot.create :paper
+    visit papers_url
+    expect(page).to have_link 'Delete this paper', href: paper_path(@paper)
   end
 end
